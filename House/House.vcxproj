@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FF73A6CC-D07E-4E68-90AC-48DB6B515127}</ProjectGuid>
+    <RootNamespace>House</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x86;$(VCInstallDir)bin;$(WindowsSdkDir)bin\NETFX 4.0 Tools;$(WindowsSdkDir)bin;$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(FrameworkSDKDir)\bin;$(MSBuildToolsPath32);$(VSInstallDir);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH)</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x86;$(VCInstallDir)bin;$(WindowsSdkDir)bin\NETFX 4.0 Tools;$(WindowsSdkDir)bin;$(VSInstallDir)Common7\Tools\bin;$(VSInstallDir)Common7\tools;$(VSInstallDir)Common7\ide;$(ProgramFiles)\HTML Help Workshop;$(FrameworkSDKDir)\bin;$(MSBuildToolsPath32);$(VSInstallDir);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(DXSDK_DIR)Include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(DXSDK_DIR)Include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ExecutablePath>$(WindowsSdkDir)bin\NETFX 4.0 Tools;$(VCInstallDir)bin;$(DXSDK_DIR)Utilites\bin\x86;$(WindowsSdkDir)bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(FrameworkSDKDir)include;$(WindowsSdkDir)include;$(VCInstallDir)atlmfc\include;$(VCInstallDir)include;$(DXSDK_DIR)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(FrameworkSDKDir)lib;$(WindowsSdkDir)lib;$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib;$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Soft\Microsoft\VS2017\VC\Tools\MSVC\14.12.25827\include;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\ucrt;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\um;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\winrt;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d10.lib;d3dx10d.lib;dxerr.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>C:\Soft\Microsoft\VS2017\VC\Tools\MSVC\14.12.25827\lib\x86;C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.16299.0\um\x86;C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.16299.0\ucrt\x86;C:\Soft\Microsoft\DirectXSDK\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Soft\Microsoft\VS2017\VC\Tools\MSVC\14.12.25827\include;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\ucrt;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\um;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\winrt;C:\Program Files %28x86%29\Windows Kits\10\Include\10.0.16299.0\shared;C:\Soft\Microsoft\DirectXSDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d10.lib;d3dx10d.lib;dxerr.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>
+      </IgnoreAllDefaultLibraries>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>C:\Soft\Microsoft\VS2017\VC\Tools\MSVC\14.12.25827\lib\$(Platform);C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.16299.0\um\$(Platform);C:\Program Files %28x86%29\Windows Kits\10\Lib\10.0.16299.0\ucrt\$(Platform);C:\Soft\Microsoft\DirectXSDK\Lib\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Soft\Microsoft\DirectXSDK\Lib\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.16299.0\ucrt\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.16299.0\um\x86;C:\Soft\Microsoft\VS2017\VC\Tools\MSVC\14.12.25827\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Headers\Box.h" />
+    <ClInclude Include="..\Headers\Camera.h" />
+    <ClInclude Include="..\Headers\Cylinder.h">
+      <DeploymentContent>false</DeploymentContent>
+    </ClInclude>
+    <ClInclude Include="..\Headers\d3dApp.h" />
+    <ClInclude Include="..\Headers\d3dUtil.h" />
+    <ClInclude Include="..\Headers\DrawableTex2D.h" />
+    <ClInclude Include="..\Headers\Effects.h" />
+    <ClInclude Include="..\Headers\GameTimer.h" />
+    <ClInclude Include="..\Headers\InputLayouts.h" />
+    <ClInclude Include="..\Headers\Light.h" />
+    <ClInclude Include="..\Headers\Mesh.h" />
+    <ClInclude Include="..\Headers\PeaksAndValleys.h" />
+    <ClInclude Include="..\Headers\PSystem.h" />
+    <ClInclude Include="..\Headers\Quad.h" />
+    <ClInclude Include="..\Headers\RectangleBox.h" />
+    <ClInclude Include="..\Headers\Sky.h" />
+    <ClInclude Include="..\Headers\Sphere.h" />
+    <ClInclude Include="..\Headers\Terrain.h" />
+    <ClInclude Include="..\Headers\TextureMgr.h" />
+    <ClInclude Include="..\Headers\TreeSprites.h" />
+    <ClInclude Include="..\Headers\TriangleBox.h" />
+    <ClInclude Include="..\Headers\Vertex.h" />
+    <ClInclude Include="..\Headers\Waves.h" />
+    <ClInclude Include="..\Headers\WindowedBox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\Sources\Box.cpp" />
+    <ClCompile Include="..\Sources\Camera.cpp" />
+    <ClCompile Include="..\Sources\Cylinder.cpp" />
+    <ClCompile Include="..\Sources\d3dApp.cpp" />
+    <ClCompile Include="..\Sources\d3dUtil.cpp" />
+    <ClCompile Include="..\Sources\DrawableTex2D.cpp" />
+    <ClCompile Include="..\Sources\Effects.cpp" />
+    <ClCompile Include="..\Sources\GameTimer.cpp" />
+    <ClCompile Include="..\Sources\InputLayouts.cpp" />
+    <ClCompile Include="..\Sources\Mesh.cpp" />
+    <ClCompile Include="..\Sources\PSystem.cpp" />
+    <ClCompile Include="..\Sources\Quad.cpp" />
+    <ClCompile Include="..\Sources\RectangleBox.cpp" />
+    <ClCompile Include="..\Sources\Sky.cpp" />
+    <ClCompile Include="..\Sources\Sphere.cpp" />
+    <ClCompile Include="..\Sources\Terrain.cpp" />
+    <ClCompile Include="..\Sources\TextureMgr.cpp" />
+    <ClCompile Include="..\Sources\TreeSprites.cpp" />
+    <ClCompile Include="..\Sources\TriangleBox.cpp" />
+    <ClCompile Include="..\Sources\Waves.cpp" />
+    <ClCompile Include="..\Sources\WindowedBox.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\buildshadowmap.fx" />
+    <None Include="..\Shaders\clip.fx" />
+    <None Include="..\Shaders\color.fx" />
+    <None Include="..\Shaders\cubemap.fx" />
+    <None Include="..\Shaders\drawshadowmap.fx" />
+    <None Include="..\Shaders\fire.fx" />
+    <None Include="..\Shaders\fog.fx" />
+    <None Include="..\Shaders\lighthelper.fx" />
+    <None Include="..\Shaders\lighting.fx" />
+    <None Include="..\Shaders\mesh.fx" />
+    <None Include="..\Shaders\normalmap.fx" />
+    <None Include="..\Shaders\picked.fx" />
+    <None Include="..\Shaders\rain.fx" />
+    <None Include="..\Shaders\shadow.fx" />
+    <None Include="..\Shaders\sky.fx" />
+    <None Include="..\Shaders\terrain.fx" />
+    <None Include="..\Shaders\tex.fx" />
+    <None Include="..\Shaders\texAlpha.fx" />
+    <None Include="..\Shaders\tree.fx" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

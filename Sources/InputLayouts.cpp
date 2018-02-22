@@ -1,0 +1,110 @@
+#include "..\Headers\InputLayouts.h"
+#include "..\Headers\Effects.h"
+
+ID3D10InputLayout* InputLayout::Pos                 = 0;
+ID3D10InputLayout* InputLayout::PosTex              = 0;
+ID3D10InputLayout* InputLayout::PosNormalTex        = 0;
+ID3D10InputLayout* InputLayout::PosCubeTex			= 0;
+ID3D10InputLayout* InputLayout::PosTangentNormalMapTex = 0;
+ID3D10InputLayout* InputLayout::PosTangentNormalTex = 0;
+ID3D10InputLayout* InputLayout::PosShadowTangentNormalTex = 0;
+ID3D10InputLayout* InputLayout::Particle            = 0;
+
+void InputLayout::InitAll(ID3D10Device* device)
+{
+	D3D10_PASS_DESC PassDesc;
+
+	//
+	// Position vertex
+	//
+ 	D3D10_INPUT_ELEMENT_DESC posVertexDesc[] =
+	{
+		{"POSITION",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,  D3D10_INPUT_PER_VERTEX_DATA, 0}
+	};
+
+	fx::SkyFX->GetTechniqueByName("SkyTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+    HR(device->CreateInputLayout(posVertexDesc, 1, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &Pos));
+
+	//
+	// Position-texture vertex
+	//
+	D3D10_INPUT_ELEMENT_DESC posTexVertexDesc[] =
+	{
+		{"POSITION",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0,  D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"TEXCOORD",  0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D10_INPUT_PER_VERTEX_DATA, 0}
+	};
+
+	fx::DrawShadowMapFX->GetTechniqueByName("DrawShadowMapTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+	HR(device->CreateInputLayout(posTexVertexDesc, 2, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &PosTex));
+
+	//
+	// Position-normal-texture vertex
+	//
+
+	D3D10_INPUT_ELEMENT_DESC posNormalTexVertexDesc[] =
+	{
+		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 24, D3D10_INPUT_PER_VERTEX_DATA, 0},
+	};
+
+    fx::TerrainFX->GetTechniqueByName("TerrainTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+    HR(device->CreateInputLayout(posNormalTexVertexDesc, 3, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &PosNormalTex));
+
+
+	fx::CubeMapFX->GetTechniqueByName("CubeMapTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+	HR(device->CreateInputLayout(posNormalTexVertexDesc, 3, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &PosCubeTex));
+
+	// 
+	// Position-tangent-normal-texture vertex
+	//
+	D3D10_INPUT_ELEMENT_DESC vertexDesc[] =
+	{
+		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"TANGENT",  0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"NORMAL",   0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 24, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT,    0, 36, D3D10_INPUT_PER_VERTEX_DATA, 0},
+	};
+
+	fx::NormalMapFX->GetTechniqueByName("NormalMapTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+	HR(device->CreateInputLayout(vertexDesc, 4, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &PosTangentNormalMapTex));
+
+    fx::MeshFX->GetTechniqueByName("MeshTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+    HR(device->CreateInputLayout(vertexDesc, 4, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &PosTangentNormalTex));
+
+	fx::ShadowFX->GetTechniqueByName("ShadowTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+	HR(device->CreateInputLayout(vertexDesc, 4, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &PosShadowTangentNormalTex));
+
+	// 
+	// Particle vertex
+	//
+	D3D10_INPUT_ELEMENT_DESC particleDesc[] =
+	{
+		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"VELOCITY", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"SIZE",     0, DXGI_FORMAT_R32G32_FLOAT,    0, 24, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"AGE",      0, DXGI_FORMAT_R32_FLOAT,       0, 32, D3D10_INPUT_PER_VERTEX_DATA, 0},
+		{"TYPE",     0, DXGI_FORMAT_R32_UINT,        0, 36, D3D10_INPUT_PER_VERTEX_DATA, 0},
+	};
+
+	fx::FireFX->GetTechniqueByName("StreamOutTech")->GetPassByIndex(0)->GetDesc(&PassDesc);
+    HR(device->CreateInputLayout(particleDesc, 5, PassDesc.pIAInputSignature,
+		PassDesc.IAInputSignatureSize, &Particle));
+}
+
+void InputLayout::DestroyAll()
+{
+	ReleaseCOM(Pos);
+	ReleaseCOM(PosNormalTex);
+//	ReleaseCOM(PosCubeTex);
+	ReleaseCOM(PosTangentNormalTex);
+	ReleaseCOM(PosShadowTangentNormalTex);
+	ReleaseCOM(Particle);
+}
