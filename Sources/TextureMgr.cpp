@@ -1,6 +1,8 @@
 #include "..\Headers\TextureMgr.h"
 #include <fstream>
 
+#pragma comment(lib, "legacy_stdio_definitions.lib")
+
 using namespace std;
 
 TextureMgr& GetTextureMgr()

@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "House", "House\House.vcxproj", "{FF73A6CC-D07E-4E68-90AC-48DB6B515127}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6198127C-B240-4A57-AAB1-669B87CFF6D6}"
+	ProjectSection(SolutionItems) = preProject
+		Models\tree.m3d = Models\tree.m3d
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32

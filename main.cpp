@@ -301,7 +301,7 @@ void HouseApp::initApp()
 
 	mShadowMap.init(md3dDevice, 1024, 1024, false, DXGI_FORMAT_UNKNOWN);
 
-	mTreeMesh.init(md3dDevice, L"..\\Models\\tree.m3d");
+	mTreeMesh.init(md3dDevice, L".\\Models\\tree.m3d");
 	mTreeMesh.setCubeMap(mEnvMapRV);
 
 	mClearColor = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
@@ -309,26 +309,26 @@ void HouseApp::initApp()
 	//GetCamera().position() = D3DXVECTOR3(0.0f, 1.8f, -10.0f);
 	GetCamera().position() = D3DXVECTOR3(59.9314f, -9.44619f, -161.012f);
 
-	mFloorMapRV         = GetTextureMgr().createTex(L"..\\Textures\\House\\floor.dds");
-	mFloorNormalMapRV   = GetTextureMgr().createTex(L"..\\Textures\\House\\floor.dds");
-	mFlareMapRV         = GetTextureMgr().createTex(L"..\\Textures\\Flare\\flare.dds");
-	mWindowMapRV        = GetTextureMgr().createTex(L"..\\Textures\\House\\window.dds");
-	mWindowWallMapRV    = GetTextureMgr().createTex(L"..\\Textures\\House\\wall_window.dds");
-	mWall10x5MapRV      = GetTextureMgr().createTex(L"..\\Textures\\House\\wall_10x5.dds");
-	mWall20x5MapRV      = GetTextureMgr().createTex(L"..\\Textures\\House\\wall_20x5.dds");
-	mDoorWallMapRV      = GetTextureMgr().createTex(L"..\\Textures\\House\\wall_20x5_door_arc.dds");
-	mDoorMapRV          = GetTextureMgr().createTex(L"..\\Textures\\House\\wall_20x5.dds");
-	mRoofMapRV          = GetTextureMgr().createTex(L"..\\Textures\\House\\ceiling.dds");
-	mRoofLineMapRV      = GetTextureMgr().createTex(L"..\\Textures\\House\\roof.dds");
-	mRoofTriMapRV       = GetTextureMgr().createTex(L"..\\Textures\\House\\roof_triangle.dds");
-	mBrickNormalMapRV   = GetTextureMgr().createTex(L"..\\Textures\\Brick\\bricks_normal.dds");
-	mFlagMapRV          = GetTextureMgr().createTex(L"..\\Textures\\House\\Russian.jpg");
-	mBaseMapRV          = GetTextureMgr().createTex(L"..\\Textures\\Stone\\stone_diffuse.dds");
-	mBaseNormalMapRV    = GetTextureMgr().createTex(L"..\\Textures\\Stone\\stone_normal.dds");
-	mSpecMapRV			= GetTextureMgr().createTex(L"..\\Textures\\Default\\spec.dds");
-	mDefaultSpecMapRV	= GetTextureMgr().createTex(L"..\\Textures\\Default\\defaultspec.dds");
-	mDefaultNormalMapRV = GetTextureMgr().createTex(L"..\\Textures\\Default\\default_normal.dds");
-	mEnvMapRV = GetTextureMgr().createCubeTex(L"..\\Textures\\EnvMap\\grassenvmap1024.dds");
+	mFloorMapRV         = GetTextureMgr().createTex(L"Textures\\House\\floor.dds");
+	mFloorNormalMapRV   = GetTextureMgr().createTex(L"Textures\\House\\floor.dds");
+	mFlareMapRV         = GetTextureMgr().createTex(L"Textures\\Flare\\flare.dds");
+	mWindowMapRV        = GetTextureMgr().createTex(L"Textures\\House\\window.dds");
+	mWindowWallMapRV    = GetTextureMgr().createTex(L"Textures\\House\\wall_window.dds");
+	mWall10x5MapRV      = GetTextureMgr().createTex(L"Textures\\House\\wall_10x5.dds");
+	mWall20x5MapRV      = GetTextureMgr().createTex(L"Textures\\House\\wall_20x5.dds");
+	mDoorWallMapRV      = GetTextureMgr().createTex(L"Textures\\House\\wall_20x5_door_arc.dds");
+	mDoorMapRV          = GetTextureMgr().createTex(L"Textures\\House\\wall_20x5.dds");
+	mRoofMapRV          = GetTextureMgr().createTex(L"Textures\\House\\ceiling.dds");
+	mRoofLineMapRV      = GetTextureMgr().createTex(L"Textures\\House\\roof.dds");
+	mRoofTriMapRV       = GetTextureMgr().createTex(L"Textures\\House\\roof_triangle.dds");
+	mBrickNormalMapRV   = GetTextureMgr().createTex(L"Textures\\Brick\\bricks_normal.dds");
+	mFlagMapRV          = GetTextureMgr().createTex(L"Textures\\House\\Russian.jpg");
+	mBaseMapRV          = GetTextureMgr().createTex(L"Textures\\Stone\\stone_diffuse.dds");
+	mBaseNormalMapRV    = GetTextureMgr().createTex(L"Textures\\Stone\\stone_normal.dds");
+	mSpecMapRV			= GetTextureMgr().createTex(L"Textures\\Default\\spec.dds");
+	mDefaultSpecMapRV	= GetTextureMgr().createTex(L"Textures\\Default\\defaultspec.dds");
+	mDefaultNormalMapRV = GetTextureMgr().createTex(L"Textures\\Default\\default_normal.dds");
+	mEnvMapRV = GetTextureMgr().createCubeTex(L"Textures\\EnvMap\\grassenvmap1024.dds");
 
 	mHouseFloor.init(md3dDevice, 21, 11, 1);
 	mCylinder.init(md3dDevice, 0.1f, 0.1f, 5, 30, 30);
@@ -349,13 +349,13 @@ void HouseApp::initApp()
 	mSky.init(md3dDevice, mEnvMapRV, 5000.0f);
 
 	Terrain::InitInfo tii;
-	tii.HeightmapFilename = L"..\\Heightmap\\terrain1.raw";
-	tii.LayerMapFilename0 = L"..\\Textures\\LandTex\\grass.dds";
-	tii.LayerMapFilename1 = L"..\\Textures\\LandTex\\lightdirt.dds";
-	tii.LayerMapFilename2 = L"..\\Textures\\LandTex\\darkdirt.dds";
-	tii.LayerMapFilename3 = L"..\\Textures\\Stone\\stone.dds";
-	tii.LayerMapFilename4 = L"..\\Textures\\Snow\\snow.dds";
-	tii.BlendMapFilename  = L"..\\Textures\\Default\\blend.dds";
+	tii.HeightmapFilename = L"Heightmap\\terrain1.raw";
+	tii.LayerMapFilename0 = L"Textures\\LandTex\\grass.dds";
+	tii.LayerMapFilename1 = L"Textures\\LandTex\\lightdirt.dds";
+	tii.LayerMapFilename2 = L"Textures\\LandTex\\darkdirt.dds";
+	tii.LayerMapFilename3 = L"Textures\\Stone\\stone.dds";
+	tii.LayerMapFilename4 = L"Textures\\Snow\\snow.dds";
+	tii.BlendMapFilename  = L"Textures\\Default\\blend.dds";
 	tii.HeightScale  = 0.25f;
 	tii.HeightOffset = -20.0f;
 	tii.NumRows      = 513;
@@ -376,11 +376,11 @@ void HouseApp::initApp()
 	HR(md3dDevice->CreateBlendState(&blendDesc, &mTransparentBS));
 
 	vector<wstring> flares;
-	flares.push_back(L"..\\Textures\\Flare\\flare0.dds"); 
+	flares.push_back(L"Textures\\Flare\\flare0.dds"); 
 	ID3D10ShaderResourceView* texArray = GetTextureMgr().createTexArray(L"flares", flares);
 
 	vector<wstring> raindrops;
-	raindrops.push_back(L"..\\Textures\\Rain\\raindrop.dds"); 
+	raindrops.push_back(L"Textures\\Rain\\raindrop.dds"); 
 	texArray = GetTextureMgr().createTexArray(L"raindrops", raindrops);
 
 	mLand.init(md3dDevice, tii);
