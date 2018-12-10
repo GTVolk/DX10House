@@ -18,6 +18,9 @@
 #include "Headers/PSystem.h"
 #include <vector>
 #include <sstream>
+
+#pragma comment(lib, "legacy_stdio_definitions.lib")
+
 using namespace std;
 
 struct QuadVertex
@@ -37,7 +40,6 @@ public:
 	void updateScene(float dt);
 	void drawScene();
 	void drawSceneToShadowMap();
-	void buildNDCQuad();
 
 	LRESULT msgProc(UINT msg, WPARAM wParam, LPARAM lParam);
  
@@ -187,9 +189,6 @@ HouseApp::HouseApp(HINSTANCE hInstance)
 	D3DXMatrixIdentity(&mLandWorld);
 
 	D3DXMatrixIdentity(&mFloorPos);
-	//D3DXMatrixRotationY(&mFloorPos, PI/2);
-	//D3DXMatrixIdentity(&mCylinderPos);
-	//D3DXMatrixTranslation(&mCylinderPos, 21.6622f, -19.0198f, -115.983f);
 
 	D3DXMatrixTranslation(&mTreeWorld, 43.687f, -19.443f, -113.09f);
 
@@ -229,7 +228,6 @@ HouseApp::HouseApp(HINSTANCE hInstance)
 	mFlagPos = mFrontPane * mFlagPos * mFloorPos;
 	mHouseTorchPos = mHouseTorchPos * mFloorPos;
 
-	//D3DXMatrixScaling(&mFloorTexMtx, 10.0f, 20.0f, 1.0f);
 	D3DXMatrixRotationZ(&mFloorTexMtx, PI/2);
 	D3DXMatrixIdentity(&mIdentityTexMtx);
 
@@ -252,8 +250,6 @@ HouseApp::~HouseApp()
 {
 	if( md3dDevice )
 		md3dDevice->ClearState();
-
-	//ReleaseCOM(mNDCQuadVB);
 
 	fx::DestroyAll();
 	InputLayout::DestroyAll();
@@ -297,16 +293,13 @@ void HouseApp::initApp()
 
 	HR(md3dDevice->CreateRasterizerState(&rsDesc, &mNoCullRS));
 
-	//buildNDCQuad();
-
 	mShadowMap.init(md3dDevice, 1024, 1024, false, DXGI_FORMAT_UNKNOWN);
 
-	mTreeMesh.init(md3dDevice, L".\\Models\\tree.m3d");
+	mTreeMesh.init(md3dDevice, L"Models\\tree.m3d");
 	mTreeMesh.setCubeMap(mEnvMapRV);
 
 	mClearColor = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 
-	//GetCamera().position() = D3DXVECTOR3(0.0f, 1.8f, -10.0f);
 	GetCamera().position() = D3DXVECTOR3(59.9314f, -9.44619f, -161.012f);
 
 	mFloorMapRV         = GetTextureMgr().createTex(L"Textures\\House\\floor.dds");
@@ -397,10 +390,10 @@ void HouseApp::initApp()
 	mHouseLight.diffuse  = D3DXCOLOR(0.8f, 0.8f, 0.8f, 1.0f);
 	mHouseLight.specular = D3DXCOLOR(0.5f, 0.5f, 0.5f, 1.0f);
 
-	//D3DXMatrixOrthoOffCenterLH(&mLightVolume, 25.4858f, 60.0411f, -29.2042f, 47.5315f, -129.811f, -89.9145f);
-	//D3DXMatrixOrthoLH(&mLightVolume, 100.0f, 100.0f, 1.0f, 800.0f);
-	//D3DXMatrixTranslation(&mLightVolume, 100, 100, 100);
-	//D3DXMatrixOrthoLH(&mLightVolume, 30.0f, 30.0f, 1.0f, 100.0f);
+	D3DXMatrixOrthoOffCenterLH(&mLightVolume, 25.4858f, 60.0411f, -29.2042f, 47.5315f, -129.811f, -89.9145f);
+	D3DXMatrixOrthoLH(&mLightVolume, 100.0f, 100.0f, 1.0f, 800.0f);
+	D3DXMatrixTranslation(&mLightVolume, 100, 100, 100);
+	D3DXMatrixOrthoLH(&mLightVolume, 30.0f, 30.0f, 1.0f, 100.0f);
 	mLand.setDirectionToSun(-mParallelLight.dir);
 }
 
@@ -432,25 +425,29 @@ void HouseApp::updateScene(float dt)
 	mFire.update(dt, mTimer.getGameTime());
 	mRain.update(dt, mTimer.getGameTime());
 
-	/*
 	// Animate light and keep shadow in sync.
 	D3DXVECTOR3 lightPos;
 	lightPos.x = 300.0f*cosf(0.25f*mTimer.getGameTime());
 	lightPos.y = 200.0f;
 	lightPos.z = 300.0f*sinf(0.25f*mTimer.getGameTime());
-	*/
 
 	// Animate light and keep shadow in sync.
-	D3DXVECTOR3 lightPos;
-	lightPos.x = 30.0f*cosf(0.25f*mTimer.getGameTime());
-	lightPos.y = 20.0f;
-	lightPos.z = 30.0f*sinf(0.25f*mTimer.getGameTime());
+	D3DXVECTOR3 newLightPos;
+	newLightPos.x = 30.0f*cosf(0.25f*mTimer.getGameTime());
+	newLightPos.y = 20.0f;
+	newLightPos.z = 30.0f*sinf(0.25f*mTimer.getGameTime());
 
 	D3DXMatrixLookAtLH(&mLightView, &lightPos,
 		&D3DXVECTOR3(0.0f, 0.0f, 0.0f), &D3DXVECTOR3(0.0f, 1.0f, 0.0f));
 
 	D3DXVECTOR3 lightDirection = -lightPos;
 	D3DXVec3Normalize(&mParallelLight.dir, &lightDirection);
+
+	D3DXMatrixLookAtLH(&mLightView, &newLightPos,
+		&D3DXVECTOR3(0.0f, 0.0f, 0.0f), &D3DXVECTOR3(0.0f, 1.0f, 0.0f));
+
+	D3DXVECTOR3 newLightDirection = -newLightPos;
+	D3DXVec3Normalize(&mParallelLight.dir, &newLightDirection);
 
 	float cx = GetCamera().position().x - 21.6622f;
 	float cz = GetCamera().position().z + 115.983f;
@@ -513,24 +510,6 @@ void HouseApp::drawScene()
 
 	// restore rendering to backbuffer
 	resetOMTargetsAndViewport();
-
-	//
-	// Draw a quad with shadow map as texture to the screen so we can see
-	// what the shadow map looks like.
-	//
-	//	UINT stride = sizeof(QuadVertex);
-	//    UINT offset = 0;
-	//    md3dDevice->IASetVertexBuffers(0, 1, &mNDCQuadVB, &stride, &offset);
-	//	md3dDevice->IASetInputLayout(InputLayout::PosTex);
-	//	mfxDrawShadowMapTexVar->SetResource(mShadowMap.depthMap());
-	//
-	//	ID3D10EffectPass* pass = mDrawShadowMapTech->GetPassByIndex(0);
-	//	pass->Apply(0);
-	//	md3dDevice->Draw(6, 0);
-	//
-	//
-	// Draw the rest of the scene.
-	//
 
 	md3dDevice->IASetInputLayout(InputLayout::PosShadowTangentNormalTex);
 
@@ -984,47 +963,3 @@ LRESULT HouseApp::msgProc(UINT msg, WPARAM wParam, LPARAM lParam)
 
 	return D3DApp::msgProc(msg, wParam, lParam);
 }
-/*
-void HouseApp::buildNDCQuad()
-{
-	D3DXVECTOR3 pos[] = 
-	{
-		D3DXVECTOR3(0.0f, -1.0f, 0.0f),
-		D3DXVECTOR3(0.0f,  0.0f, 0.0f),
-		D3DXVECTOR3(1.0f,  0.0f, 0.0f),
-
-		D3DXVECTOR3(0.0f, -1.0f, 0.0f),
-		D3DXVECTOR3(1.0f,  0.0f, 0.0f),
-		D3DXVECTOR3(1.0f, -1.0f, 0.0f)
-	};
-
-	D3DXVECTOR2 tex[] = 
-	{
-		D3DXVECTOR2(0.0f, 1.0f),
-		D3DXVECTOR2(0.0f, 0.0f),
-		D3DXVECTOR2(1.0f, 0.0f),
-
-		D3DXVECTOR2(0.0f, 1.0f),
-		D3DXVECTOR2(1.0f, 0.0f),
-		D3DXVECTOR2(1.0f, 1.0f)
-	};
-
-	QuadVertex qv[6];
-
-	for(int i = 0; i < 6; ++i)
-	{
-		qv[i].pos  = pos[i];
-		qv[i].texC = tex[i];
-	}
-
-	D3D10_BUFFER_DESC vbd;
-    vbd.Usage = D3D10_USAGE_IMMUTABLE;
-	vbd.ByteWidth = sizeof(QuadVertex) * 6;
-    vbd.BindFlags = D3D10_BIND_VERTEX_BUFFER;
-    vbd.CPUAccessFlags = 0;
-    vbd.MiscFlags = 0;
-    D3D10_SUBRESOURCE_DATA vinitData;
-    vinitData.pSysMem = qv;
-    HR(md3dDevice->CreateBuffer(&vbd, &vinitData, &mNDCQuadVB));
-}
-*/
