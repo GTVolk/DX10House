@@ -41,16 +41,16 @@ ID3D10Effect* CreateFX(ID3D10Device* device, std::wstring filename)
 
 void fx::InitAll(ID3D10Device* device)
 {
-	SkyFX            = CreateFX(device, L"..\\Shaders\\sky.fx");
-	CubeMapFX		 = CreateFX(device, L"..\\Shaders\\cubemap.fx");
-	NormalMapFX		 = CreateFX(device, L"..\\Shaders\\normalmap.fx");
-	ShadowFX         = CreateFX(device, L"..\\Shaders\\shadow.fx");
-	DrawShadowMapFX  = CreateFX(device, L"..\\Shaders\\drawshadowmap.fx");
-	TerrainFX        = CreateFX(device, L"..\\Shaders\\terrain.fx");
-	MeshFX           = CreateFX(device, L"..\\Shaders\\mesh.fx");
-	BuildShadowMapFX = CreateFX(device, L"..\\Shaders\\buildshadowmap.fx");
-	FireFX           = CreateFX(device, L"..\\Shaders\\fire.fx");
-	RainFX           = CreateFX(device, L"..\\Shaders\\rain.fx");
+	SkyFX            = CreateFX(device, L"Shaders\\sky.fx");
+	CubeMapFX		 = CreateFX(device, L"Shaders\\cubemap.fx");
+	NormalMapFX		 = CreateFX(device, L"Shaders\\normalmap.fx");
+	ShadowFX         = CreateFX(device, L"Shaders\\shadow.fx");
+	DrawShadowMapFX  = CreateFX(device, L"Shaders\\drawshadowmap.fx");
+	TerrainFX        = CreateFX(device, L"Shaders\\terrain.fx");
+	MeshFX           = CreateFX(device, L"Shaders\\mesh.fx");
+	BuildShadowMapFX = CreateFX(device, L"Shaders\\buildshadowmap.fx");
+	FireFX           = CreateFX(device, L"Shaders\\fire.fx");
+	RainFX           = CreateFX(device, L"Shaders\\rain.fx");
 }
 
 void fx::DestroyAll()

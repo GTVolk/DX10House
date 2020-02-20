@@ -103,7 +103,7 @@ void InputLayout::DestroyAll()
 {
 	ReleaseCOM(Pos);
 	ReleaseCOM(PosNormalTex);
-//	ReleaseCOM(PosCubeTex);
+	ReleaseCOM(PosCubeTex);
 	ReleaseCOM(PosTangentNormalTex);
 	ReleaseCOM(PosShadowTangentNormalTex);
 	ReleaseCOM(Particle);

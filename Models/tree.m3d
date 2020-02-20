@@ -4,14 +4,14 @@
 #Triangles 1674
 
 ***************Subsets********************
-..\\Textures\\Tree\\tree01-leaves_diffuse.dds
-..\\Textures\\Default\\default_spec.dds
-..\\Textures\\Default\\default_normal.dds
+Textures\\Tree\\tree01-leaves_diffuse.dds
+Textures\\Default\\default_spec.dds
+Textures\\Default\\default_normal.dds
 Reflectivity 0 0 0
 
-..\\Textures\\Tree\\tree01-bark_diffuse.dds
-..\\Textures\\Default\\default_spec.dds
-..\\Textures\\Default\\default_normal.dds
+Textures\\Tree\\tree01-bark_diffuse.dds
+Textures\\Default\\default_spec.dds
+Textures\\Default\\default_normal.dds
 Reflectivity 0 0 0
 
 ***************Vertices*********************
