@@ -14,6 +14,8 @@ DirectX 10 app with some features:
 - Cubemap
 - Direct lighting
 
+![Screenshot](/Screenshot.PNG?raw=true)
+
 ## Requirements
 
 - Visual Studio

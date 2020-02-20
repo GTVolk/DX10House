@@ -2,6 +2,7 @@
 #define EFFECTS_H
 
 #include "d3dUtil.h"
+#include <string>
 
 namespace fx
 {
